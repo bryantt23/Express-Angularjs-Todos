@@ -18,23 +18,13 @@
         $scope.name="jane doe";
 
         var hi = function () {
-
             $http.get("data").then(function mySuccess(response) {
-                $scope.message = response.message; //this works well
-                debugger;
-                console.log(response.data.message);
-                $scope.message = (response.data.message);
-                console.log($scope.message);
+                $scope.message = response.data.todos;
+                // debugger;
             }, function myError(response) {
                 $scope.message = response.statusText;
             });
-            //   .then(function (response) {
-            //                 $scope.message = response.message; //this works well
-            //                 console.log($scope.message);
-            //             });
         }
-
         hi();
-
     });
 </script>
