@@ -1,17 +1,40 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-    <script>
-        angular.module('myApp', []).controller('namesCtrl', function ($scope) {
-            
-        });
-    </script>
-
 </head>
 
 <h1>Todos</h1>
 
 <div ng-app="myApp" ng-controller="namesCtrl">
     {{5+8}}
+    {{message}}
+    {{myApp.message}}
     s
+    {{name}}
 </div>
+
+<script>
+    angular.module('myApp', []).controller('namesCtrl', function ($scope, $http) {
+        $scope.name="jane doe";
+
+        var hi = function () {
+
+            $http.get("data").then(function mySuccess(response) {
+                $scope.message = response.message; //this works well
+                debugger;
+                console.log(response.data.message);
+                $scope.message = (response.data.message);
+                console.log($scope.message);
+            }, function myError(response) {
+                $scope.message = response.statusText;
+            });
+            //   .then(function (response) {
+            //                 $scope.message = response.message; //this works well
+            //                 console.log($scope.message);
+            //             });
+        }
+
+        hi();
+
+    });
+</script>
