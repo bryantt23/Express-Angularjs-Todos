@@ -6,11 +6,9 @@
 <h1>Todos</h1>
 
 <div ng-app="myApp" ng-controller="namesCtrl">
-    {{5+8}}
-    {{message}}
-    {{myApp.message}}
-    s
-    {{name}}
+
+    <p ng-repeat="todo in todos">{{todo}}</p>
+
 </div>
 
 <script>
@@ -19,10 +17,10 @@
 
         var hi = function () {
             $http.get("data").then(function mySuccess(response) {
-                $scope.message = response.data.todos;
+                $scope.todos = response.data.todos;
                 // debugger;
             }, function myError(response) {
-                $scope.message = response.statusText;
+                $scope.todos = response.statusText;
             });
         }
         hi();
