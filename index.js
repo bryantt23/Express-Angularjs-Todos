@@ -1,5 +1,10 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+
+https://stackoverflow.com/questions/31119605/expressjs-angularjs-post
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing       application/x-www-form-urlencoded
 
 // https://stackabuse.com/reading-and-writing-json-files-with-node-js/
 const fs = require('fs');
@@ -15,5 +20,35 @@ app.get('/',function(req,res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+
+app.post('/data', function(req, res) {
+    // var body=req.body;
+    console.log(5555);
+    console.log(req.body);
+    console.log(req.body.desc);
+    var c=5;
+    // var obj = req.query.name;
+    // var age = req.query.age;
+  
+    // var person = {
+    //   name: name,
+    //   age: age
+    // };
+  
+    // savePersonToPublicFolder(person, function(err) {
+    //   if (err) {
+    //     res.status(404).send('User not saved');
+    //     return;
+    //   }
+  
+    //   res.send('User saved');
+    // });
+    res.end();
+  });
+  
+  function savePersonToPublicFolder(person, callback) {
+    fs.writeFile('./data/data.json', JSON.stringify(person), callback);
+  }
+  
 
 app.listen(3000);
