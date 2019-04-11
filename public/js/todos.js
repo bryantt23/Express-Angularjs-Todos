@@ -1,23 +1,4 @@
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-</head>
-
-<h1>Todos</h1>
-
-<div ng-app="myApp" ng-controller="namesCtrl">
-
-
-    {{todos}}
-
-    <p ng-repeat="todo in todos">{{todo}}</p>
-
-    {{todoToAdd}}
-    <input ng-model='todoToAdd' type='text' value='' />
-    <button ng-click="addTodo()">Add To Do</button>
-</div>
-
-<script>
     angular.module('myApp', []).controller('namesCtrl', function ($scope, $http) {
         $scope.name = "jane doe";
 
@@ -53,4 +34,3 @@
         }
         hi();
     });
-</script>

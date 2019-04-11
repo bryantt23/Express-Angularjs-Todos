@@ -6,6 +6,8 @@ https://stackoverflow.com/questions/31119605/expressjs-angularjs-post
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing       application/x-www-form-urlencoded
 
+app.use(express.static(__dirname + '/public'));
+
 // https://stackabuse.com/reading-and-writing-json-files-with-node-js/
 const fs = require('fs');
 
