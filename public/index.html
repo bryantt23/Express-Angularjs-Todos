@@ -10,10 +10,18 @@
 
 
     {{todos}}
-
-    <p ng-repeat="todo in todos">{{todo}}</p>
+    <!-- https://stackoverflow.com/questions/16296670/angular-ng-repeat-error-duplicates-in-a-repeater-are-not-allowed -->
+    <!-- https://stackoverflow.com/questions/14514461/how-do-i-bind-to-list-of-checkbox-values-with-angularjs -->
+    <label ng-repeat="todo in todos track by $index">
+        <input
+          type="checkbox"
+          value="{{todo}}"
+          ng-click="toggleSelection(todo)"
+        >  {{$index}} {{todo}} <br>
+    </label>
 
     {{todoToAdd}}
     <input ng-model='todoToAdd' type='text' value='' />
     <button ng-click="addTodo()">Add To Do</button>
+    <button ng-click="deleteTodos()">Delete To Dos</button>
 </div>

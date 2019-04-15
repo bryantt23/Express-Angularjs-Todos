@@ -27,18 +27,6 @@ app.get('/', function (req, res) {
 app.post('/data', function (req, res) {
   // var body=req.body;
   let todos = req.body;
-  console.log(5555);
-  console.log(req.body);
-  console.log(req.body.desc);
-  console.log(JSON.stringify({ "todos": todos }));
-  var c = 5;
-  // var obj = req.query.name;
-  // var age = req.query.age;
-
-  // var person = {
-  //   name: name,
-  //   age: age
-  // };
 
   saveTodosToPublicFolder(todos, function (err) {
     if (err) {
@@ -47,14 +35,11 @@ app.post('/data', function (req, res) {
     }
   });
 
-  //   res.send('User saved');
-  // });
   res.end();
 });
 
 function saveTodosToPublicFolder(todos, callback) {
   fs.writeFile('./data/data.json', JSON.stringify({ "todos": todos }), callback);
 }
-
 
 app.listen(3000);
