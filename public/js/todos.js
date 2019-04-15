@@ -1,13 +1,8 @@
 
     angular.module('myApp', []).controller('namesCtrl', function ($scope, $http) {
         $scope.name = "jane doe";
-
-        const updateJsonFile = () => {
-
-            console.log((JSON.stringify({ "todos": $scope.todos })));
-
-        }
-
+        $scope.todos = [];
+        
         $scope.addTodo = function () {
             // alert($scope.todoToAdd)
             $scope.todos.push($scope.todoToAdd);
